@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    
+
     <title>OCR-Bill Approve</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
-        .loader { border-top-color: #3498db; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .img-container img { transition: transform 0.3s; }
-        .img-container:active img { transform: scale(1.05); }
+        .loader {
+            border-top-color: #3498db;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .img-container img {
+            transition: transform 0.3s;
+        }
+
+        .img-container:active img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
+
 <body class="bg-gray-100 min-h-screen text-gray-800 font-sans">
 
     <div id="loading" class="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center">
@@ -28,14 +48,18 @@
     <div id="reg-screen" class="hidden p-6">
         <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 mt-10 border border-gray-100 text-center">
             <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                    </path>
+                </svg>
             </div>
             <h2 class="text-2xl font-bold mb-2 text-indigo-700">ลงทะเบียนผู้อนุมัติ</h2>
             <p class="text-gray-500 text-sm mb-6">ระบุรหัสผ่านส่วนตัวเพื่อเริ่มการอนุมัติ</p>
             <div class="space-y-4">
-                <input type="password" id="reg-pass" placeholder="กรอกรหัสผ่านของคุณ" 
+                <input type="password" id="reg-pass" placeholder="กรอกรหัสผ่านของคุณ"
                     class="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none text-center text-lg">
-                <button onclick="register()" 
+                <button onclick="register()"
                     class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition transform active:scale-95 shadow-lg">
                     ยืนยันตัวตน
                 </button>
@@ -50,8 +74,13 @@
                 <h1 class="font-black text-xl text-indigo-900">ขอเบิก Bill</h1>
                 <p id="user-info" class="text-[10px] text-gray-400 font-medium uppercase tracking-wider"></p>
             </div>
-            <button onclick="loadData()" class="bg-gray-100 p-2.5 rounded-full text-gray-600 active:bg-indigo-100 active:text-indigo-600 transition">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+            <button onclick="loadData()"
+                class="bg-gray-100 p-2.5 rounded-full text-gray-600 active:bg-indigo-100 active:text-indigo-600 transition">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                    </path>
+                </svg>
             </button>
         </header>
 
@@ -61,19 +90,22 @@
 
         <div id="no-data" class="hidden text-center py-24 px-6">
             <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-800">จัดการเรียบร้อยแล้ว!</h3>
             <p class="text-gray-500 mt-2">ไม่มีรายการที่ต้องอนุมัติในขณะนี้</p>
         </div>
 
         <!-- Floating Action Bar -->
-        <div id="action-bar" class="fixed bottom-6 left-4 right-4 z-30 max-w-lg mx-auto bg-white/90 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-2xl flex gap-3">
-            <button onclick="processApprove('Rejected')" 
+        <div id="action-bar"
+            class="fixed bottom-6 left-4 right-4 z-30 max-w-lg mx-auto bg-white/90 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-2xl flex gap-3">
+            <button onclick="processApprove('Rejected')"
                 class="flex-1 bg-white border-2 border-red-500 text-red-600 font-bold py-4 rounded-xl active:bg-red-50 transition active:scale-95 uppercase tracking-wide">
                 Reject
             </button>
-            <button onclick="processApprove('Approved')" 
+            <button onclick="processApprove('Approved')"
                 class="flex-1 bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-200 active:bg-indigo-700 transition active:scale-95 uppercase tracking-wide">
                 Approve
             </button>
@@ -87,7 +119,7 @@
 
         async function init() {
             try {
-                await liff.init({ liffId: "2009018471-gUZQupT4" });
+                await liff.init({ liffId: "2009016720-Wih8NJa6" });
                 if (!liff.isLoggedIn()) {
                     liff.login();
                     return;
@@ -130,11 +162,11 @@
         async function register() {
             const pass = document.getElementById('reg-pass').value;
             if (!pass) return alert("กรุณากรอกรหัสผ่าน");
-            const data = await callApi({ 
-                action: 'register', 
-                line_uid: userProfile.userId, 
-                displayName: userProfile.displayName, 
-                password: pass 
+            const data = await callApi({
+                action: 'register',
+                line_uid: userProfile.userId,
+                displayName: userProfile.displayName,
+                password: pass
             });
             if (data) {
                 approveRequestName = data.approve_request;
@@ -153,7 +185,7 @@
             const items = await callApi({ action: 'getPending', approve_request: approveRequestName });
             const container = document.getElementById('data-container');
             container.innerHTML = "";
-            
+
             if (!items || items.length === 0) {
                 document.getElementById('no-data').classList.remove('hidden');
                 document.getElementById('action-bar').classList.add('hidden');
@@ -165,12 +197,12 @@
 
             items.forEach(item => {
                 let fileId = "";
-                if(item.pic.includes('id=')) {
+                if (item.pic.includes('id=')) {
                     fileId = item.pic.split('id=')[1].split('&')[0];
-                } else if(item.pic.includes('/d/')) {
+                } else if (item.pic.includes('/d/')) {
                     fileId = item.pic.split('/d/')[1].split('/')[0];
                 }
-                
+
                 const thumbUrl = fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w400` : "";
 
                 const card = `
@@ -222,11 +254,11 @@
             const actionLabel = status === 'Approved' ? 'Confirm Approve' : 'Confirm Reject';
             if (!confirm(`${actionLabel} สำหรับ ${selected.length} รายการ?`)) return;
 
-            const success = await callApi({ 
-                action: 'updateStatus', 
-                items: selected, 
-                line_uid: userProfile.userId, 
-                status: status 
+            const success = await callApi({
+                action: 'updateStatus',
+                items: selected,
+                line_uid: userProfile.userId,
+                status: status
             });
 
             if (success) {
@@ -237,4 +269,5 @@
         window.onload = init;
     </script>
 </body>
+
 </html>
