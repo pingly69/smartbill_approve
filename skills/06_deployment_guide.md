@@ -11,7 +11,7 @@
 |------|-------|
 | **GAS Script ID** | `1y0SFUCYYa_njyHGH7jWr2hdB5T6wPHnAIOt4FwLPBprNq3XNy-Kx7D7w` |
 | **Google Sheet ID** | `1amztKC_QEVv9H7u6ubGCJYEHCHo0NWnJhT6ksNQCpnA` |
-| **LIFF ID** | `2009018471-gUZQupT4` |
+| **LIFF ID** | `2009016720-Wih8NJa6` |
 | **GAS Web App URL** | `https://script.google.com/macros/s/AKfycbyCnwzQVEQect0BhrdnzF62beYGfF9I-Sy4sS7G4Khbwgrv3BcM_fz9nzR5LjKHwh1_gQ/exec` |
 | **GitHub Repo** | `https://github.com/pingly69/smartbill_approve` |
 | **GitHub Pages URL** | `https://pingly69.github.io/smartbill_approve/` |
@@ -145,7 +145,7 @@ Write back access_token to ~/.clasprc.json
 
 | Setting | Value |
 |---------|-------|
-| LIFF App ID | `2009018471-gUZQupT4` |
+| LIFF App ID | `2009016720-Wih8NJa6` |
 | Endpoint URL | Web App URL (deployed GAS URL) |
 | Scope | `profile` (minimum required) |
 | BotLink | Optional |

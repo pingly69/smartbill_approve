@@ -25,7 +25,7 @@
 |-------|-----------|--------|
 | **Frontend Hosting** | GitHub Pages | URL: `https://pingly69.github.io/smartbill_approve/` |
 | **Frontend** | HTML + TailwindCSS CDN + Vanilla JS | Single-page app ใน `index.html` |
-| **Frontend SDK** | LINE LIFF SDK v2 | LIFF ID: `2009018471-gUZQupT4` |
+| **Frontend SDK** | LINE LIFF SDK v2 | LIFF ID: `2009016720-Wih8NJa6` |
 | **Backend** | Google Apps Script (GAS) | Deploy เป็น Web App (doPost) |
 | **Database** | Google Sheets | Sheet ID: `1amztKC_QEVv9H7u6ubGCJYEHCHo0NWnJhT6ksNQCpnA` |
 | **File Storage** | Google Drive | เก็บรูปภาพบิล, ตั้ง auto-permission |
@@ -163,4 +163,4 @@ Key: Frontend ≠ Backend server
 | `SHEET_ID` | `1amztKC_QEVv9H7u6ubGCJYEHCHo0NWnJhT6ksNQCpnA` | code.js:7 | Google Sheets ID |
 | `LIMIT_PER_PAGE` | `5` | code.js:8 | จำนวนรายการ pending สูงสุดที่ดึงมาต่อครั้ง |
 | `GAS_WEB_APP_URL` | `https://script.google.com/macros/s/AKfycby.../exec` | index.html:84 | Deployed Web App URL |
-| `liffId` | `2009018471-gUZQupT4` | index.html:90 | LINE LIFF Application ID |
+| `liffId` | `2009016720-Wih8NJa6` | index.html | LINE LIFF Application ID |
