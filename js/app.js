@@ -93,8 +93,9 @@ async function loadData() {
             <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
                 <div class="p-5 border-b border-gray-50 bg-indigo-50/30 flex justify-between items-center">
                     <div class="flex-1 pr-4">
-                        <h3 class="font-bold text-gray-900 truncate">${item.project || 'ไม่มีชื่อโครงการ'}</h3>
-                        <p class="text-xs text-gray-500 font-medium">ผู้ขอ: ${item.reqName}</p>
+                        <span class="text-[10px] font-bold text-indigo-500 uppercase block mb-0.5 tracking-wider">PROJECT</span>
+                        <h3 class="font-bold text-gray-900 truncate leading-tight">${item.project || 'ไม่มีชื่อโครงการ'}</h3>
+                        <p class="text-xs text-gray-500 font-medium mt-1">ผู้ขอ: ${item.reqName}</p>
                     </div>
                     <div class="text-right">
                         <p class="text-lg font-black text-indigo-600 leading-none">฿${parseFloat(item.net).toLocaleString()}</p>
