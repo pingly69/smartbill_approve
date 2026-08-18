@@ -56,9 +56,9 @@
 
 **Logic**:
 1. เปิด Sheet `Approve_users`
-2. วนลูปหาแถวที่ Column C (index 2) === `line_uid`
+2. วนลูปหาแถวที่ Column C (index 2) === `line_uid` และ Column A (index 0) !== `'เงินสดย่อยรอตัด'`
 3. ถ้าเจอ → return `{ status: 'authorized', approve_request: <Column A value> }`
-4. ถ้าไม่เจอ → return `{ status: 'not_found' }`
+4. ถ้าไม่เจอ (หรือตรงกับแถว 'เงินสดย่อยรอตัด') → return `{ status: 'not_found' }`
 
 **Response (authorized)**:
 ```json
@@ -95,12 +95,12 @@
 
 **Logic**:
 1. เปิด Sheet `Approve_users`
-2. วนลูปหาแถวที่ Column B (index 1) === `password` (เปรียบเทียบเป็น String)
+2. วนลูปหาแถวที่ Column B (index 1) === `password` (เปรียบเทียบเป็น String) และ Column A (index 0) !== `'เงินสดย่อยรอตัด'`
 3. ถ้าเจอ:
    - เขียน `line_uid` ลง Column C (index 2)
    - เขียน `displayName` **ทับ** Column B (index 1) ← **⚠️ password ถูกลบแทนด้วยชื่อ**
    - return `{ success: true, approve_request: <Column A value> }`
-4. ถ้าไม่เจอ → throw Error "รหัสผ่านไม่ถูกต้อง หรือไม่มีสิทธิ์เข้าถึง"
+4. ถ้าไม่เจอ (หรือตรงกับแถว 'เงินสดย่อยรอตัด') → throw Error "รหัสผ่านไม่ถูกต้อง หรือไม่มีสิทธิ์เข้าถึง"
 
 > **⚠️ Critical Design Note**: หลังจาก register สำเร็จ password จะถูก overwrite ด้วย displayName
 > ทำให้ **register ได้เพียงครั้งเดียว** ต่อ user slot

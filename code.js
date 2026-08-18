@@ -42,7 +42,7 @@ function checkUser(line_uid) {
   const sheet = ss.getSheetByName('Approve_users');
   const data = sheet.getDataRange().getValues();
   for (let i = 1; i < data.length; i++) {
-    if (data[i][2] === line_uid) {
+    if (data[i][2] === line_uid && data[i][0] !== 'เงินสดย่อยรอตัด') {
       return { status: 'authorized', approve_request: data[i][0] };
     }
   }
@@ -54,7 +54,7 @@ function registerUser(line_uid, displayName, password) {
   const sheet = ss.getSheetByName('Approve_users');
   const data = sheet.getDataRange().getValues();
   for (let i = 1; i < data.length; i++) {
-    if (String(data[i][1]) === String(password)) {
+    if (String(data[i][1]) === String(password) && data[i][0] !== 'เงินสดย่อยรอตัด') {
       sheet.getRange(i + 1, 3).setValue(line_uid);
       sheet.getRange(i + 1, 2).setValue(displayName);
       return { success: true, approve_request: data[i][0] };
